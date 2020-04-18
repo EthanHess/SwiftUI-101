@@ -14,8 +14,11 @@ struct MainContainer: View {
     //properties
     @ObservedObject var choreDB = ChoreDatabase()
     @State var newChore : String = ""
+    @State var alertPresented = false
+    
     @State private var imagePickerPopped = false
     @State private var chosenImage : Image? = nil
+    
     
     //UI
     var textFieldHeader : some View {
@@ -50,6 +53,8 @@ struct MainContainer: View {
                         .onDelete(perform: self.delete)
                 }.navigationBarTitle("TODO")
                 .navigationBarItems(trailing: EditButton())
+            }.alert(isPresented: $alertPresented) { () -> Alert in
+                return Alert(title: Text("Please enter text"), message: Text(""), dismissButton: .default(Text("Roger that")))
             }
         }
     }
@@ -63,13 +68,13 @@ struct MainContainer: View {
     func delete(at offsets : IndexSet) {
         choreDB.chores.remove(atOffsets: offsets)
     }
-    
-    //Functions
-    //Better to use UID instead
-    //Image data nil for now but add image picker and save to core data
-    
+
     //TODO check TF
     func addChore() {
+        if self.newChore == "" {
+            self.alertPresented = true
+            return
+        }
         let randomUID = UUID().uuidString
         let theID = String(randomUID)
         let toAppend = Chore(id: theID, choreBody: self.newChore, imageData: nil)
