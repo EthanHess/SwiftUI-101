@@ -11,8 +11,10 @@ import SwiftUI
 import Combine
 
 struct MainContainer: View {
-    //properties
+    //properties (OO is for more comples properties that will be shared between multiple views)
     @ObservedObject var choreDB = ChoreDatabase()
+    
+    //State, local simpler properties
     @State var newChore : String = ""
     @State var alertPresented = false
     
@@ -34,18 +36,20 @@ struct MainContainer: View {
                 }
         }
     }
-    
-//    var animationContainer : some View {
-//        HStack {
-//
-//        }
-//    }
+
+    var chosenImageContainer : some View {
+        HStack {
+            chosenImage?.resizable().aspectRatio(contentMode: .fit)
+        }
+    }
     
     //Main body
     var body: some View {
         NavigationView {
             VStack {
                 textFieldHeader.padding()
+                chosenImageContainer.padding()
+                //animationContainer.padding()
                 List {
                     ForEach(self.choreDB.chores) { chore in
                         Text(chore.choreBody)
