@@ -9,18 +9,29 @@
 import UIKit
 import SwiftUI
 import Combine
+import CoreData
 
 struct MainContainer: View {
-    //properties (OO is for more comples properties that will be shared between multiple views)
+    //properties (OO is for more complex properties that will be shared between multiple views)
     @ObservedObject var choreDB = ChoreDatabase()
     
-    //State, local simpler properties
+    @Environment(\.managedObjectContext) var moc
+    
+    //State, local simpler properties (view watches and updates changes)
     @State var newChore : String = ""
     @State var alertPresented = false
     
     @State private var imagePickerPopped = false
     @State private var chosenImage : Image? = nil
     
+    //Core Data
+    @FetchRequest(
+        entity: CDChore.entity(),
+        sortDescriptors: [],
+        predicate: NSPredicate(format: "isComplete == %@", NSNumber(value: false))
+    ) var incompleteChores: FetchedResults<CDChore>
+    
+    //TODO add complete
     
     //UI
     var textFieldHeader : some View {
@@ -81,9 +92,33 @@ struct MainContainer: View {
         }
         let randomUID = UUID().uuidString
         let theID = String(randomUID)
-        let toAppend = Chore(id: theID, choreBody: self.newChore, imageData: nil)
+        let toAppend = Chore(id: theID, choreBody: self.newChore, imageData: nil, isComplete: false)
         choreDB.chores.append(toAppend)
         self.newChore = ""
+        
+        self.coreDataHandler(idString: theID)
+        
+        //Will eventually display in table
+        self.logCoreData()
+    }
+    
+    func logCoreData() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            print("IC chores --- \(self.incompleteChores)")
+        }
+    }
+        
+    func coreDataHandler(idString: String) {
+        let newCDChore = CDChore(context: moc)
+        newCDChore.uid = idString
+        newCDChore.body = self.newChore
+        newCDChore.imageData = nil
+        newCDChore.isComplete = false
+        do {
+            try moc.save()
+        } catch {
+            print("CD error --- \(error)")
+        }
     }
     
     func toggleImagePicker() {

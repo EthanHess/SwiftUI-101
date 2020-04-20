@@ -15,6 +15,7 @@ struct Chore : Identifiable {
     var id = String()
     var choreBody = String()
     var imageData : Data? //For core data
+    var isComplete : Bool
 }
 
 class ChoreDatabase : ObservableObject {

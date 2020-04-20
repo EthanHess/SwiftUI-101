@@ -17,6 +17,8 @@
 		2743FC642443F18E00CA87E9 /* SwiftUITodoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2743FC632443F18E00CA87E9 /* SwiftUITodoTests.swift */; };
 		2743FC6F2443F18E00CA87E9 /* SwiftUITodoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2743FC6E2443F18E00CA87E9 /* SwiftUITodoUITests.swift */; };
 		274A107E244AA364003A629B /* ImagePickerAuxiliary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274A107D244AA364003A629B /* ImagePickerAuxiliary.swift */; };
+		277EF9C7244D3E8D004951BB /* CDChore+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277EF9C5244D3E8D004951BB /* CDChore+CoreDataClass.swift */; };
+		277EF9C8244D3E8D004951BB /* CDChore+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277EF9C6244D3E8D004951BB /* CDChore+CoreDataProperties.swift */; };
 		27BCAD24244552F200FA9CAE /* MainContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BCAD23244552F200FA9CAE /* MainContainer.swift */; };
 		27BCAD262445537200FA9CAE /* Chore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BCAD252445537200FA9CAE /* Chore.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +57,8 @@
 		2743FC6E2443F18E00CA87E9 /* SwiftUITodoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUITodoUITests.swift; sourceTree = "<group>"; };
 		2743FC702443F18E00CA87E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		274A107D244AA364003A629B /* ImagePickerAuxiliary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerAuxiliary.swift; sourceTree = "<group>"; };
+		277EF9C5244D3E8D004951BB /* CDChore+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDChore+CoreDataClass.swift"; sourceTree = "<group>"; };
+		277EF9C6244D3E8D004951BB /* CDChore+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDChore+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		27BCAD23244552F200FA9CAE /* MainContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContainer.swift; sourceTree = "<group>"; };
 		27BCAD252445537200FA9CAE /* Chore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +111,8 @@
 		2743FC482443F18900CA87E9 /* SwiftUITodo */ = {
 			isa = PBXGroup;
 			children = (
+				277EF9C5244D3E8D004951BB /* CDChore+CoreDataClass.swift */,
+				277EF9C6244D3E8D004951BB /* CDChore+CoreDataProperties.swift */,
 				2743FC492443F18900CA87E9 /* AppDelegate.swift */,
 				2743FC4B2443F18900CA87E9 /* SceneDelegate.swift */,
 				2743FC4D2443F18900CA87E9 /* ViewController.swift */,
@@ -273,9 +279,11 @@
 			files = (
 				2743FC4E2443F18900CA87E9 /* ViewController.swift in Sources */,
 				27BCAD262445537200FA9CAE /* Chore.swift in Sources */,
+				277EF9C7244D3E8D004951BB /* CDChore+CoreDataClass.swift in Sources */,
 				27BCAD24244552F200FA9CAE /* MainContainer.swift in Sources */,
 				2743FC542443F18900CA87E9 /* SwiftUITodo.xcdatamodeld in Sources */,
 				274A107E244AA364003A629B /* ImagePickerAuxiliary.swift in Sources */,
+				277EF9C8244D3E8D004951BB /* CDChore+CoreDataProperties.swift in Sources */,
 				2743FC4A2443F18900CA87E9 /* AppDelegate.swift in Sources */,
 				2743FC4C2443F18900CA87E9 /* SceneDelegate.swift in Sources */,
 			);

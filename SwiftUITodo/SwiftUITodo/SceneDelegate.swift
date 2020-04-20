@@ -23,11 +23,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //guard let _ = (scene as? UIWindowScene) else { return }
         
         //Our code
-        let mainContainer = MainContainer()
+
         guard let mainWindowScene = scene as? UIWindowScene else {
             print("No scene")
             return
         }
+        
+        guard let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else {
+            fatalError("Unable to read managed object context.")
+        }
+        
+        let mainContainer = MainContainer().environment(\.managedObjectContext, context)
         
         let window = UIWindow(windowScene: mainWindowScene)
         window.rootViewController = UIHostingController(rootView: mainContainer)
